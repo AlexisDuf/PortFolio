@@ -1,0 +1,61 @@
+@font-face {
+	font-family: "Flaticon";
+	src: url("flaticon.eot");
+	src: url("flaticon.eot#iefix") format("embedded-opentype"),
+	url("flaticon.woff") format("woff"),
+	url("flaticon.ttf") format("truetype"),
+	url("flaticon.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+	font-family: Flaticon;
+        
+font-style: normal;
+margin-left: 20px;
+}.flaticon-arrow74:before {
+    font-size: 40px;
+	content: "\e000";
+}
+.flaticon-css:before {
+    color:#0070bb;
+    font-size: 80px;
+	content: "\e001";
+}
+.flaticon-github7:before {
+    font-size: 25px;
+	content: "\e002";
+}
+.flaticon-html3:before {  
+    color: #e44d26;
+    font-size: 55px;
+	content: "\e003";
+}
+.flaticon-java1:before {
+    color: #e72c2d;
+    font-size: 55px;
+	content: "\e004";
+}
+.flaticon-js1:before {
+    color: #f0db4f;
+    font-size: 55px;
+	content: "\e005";
+}
+.flaticon-linkedin2:before {
+    font-size: 25px;
+	content: "\e006";
+}
+.flaticon-mail22:before {
+    font-size: 25px;
+	content: "\e007";
+}
+.flaticon-social19:before {
+    font-size: 25px;
+	content: "\e008";
+}
+.flaticon-symbol:before {
+    color: #5a69a6;
+    font-size: 80px;
+	content: "\e009";
+}
