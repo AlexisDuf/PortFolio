@@ -31,9 +31,10 @@ $(document).ready(function() {
         var namePage = ev.target.id;
         if (namePage === "presentation" || namePage === "portfolio") {
             idFirstVisibleProject = 2;
-            launchPage(namePage);
+            //launchPage(namePage);
             var History = window.History;
             History.pushState(null, null, namePage+".html");
+            ev.preventDefault();
         }
     });
 
