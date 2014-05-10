@@ -1,0 +1,100 @@
+<!DOCTYPE>
+
+<html>
+
+<head>
+	<title>TP sur les courbes de Bézier</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/menu.css">
+	<link rel="stylesheet" type="text/css" href="../css/svg.css">
+</head>
+
+<body>
+	<div id="container">
+
+		<div id="menu">
+			<nav>
+				<a class="ex1_btn"><span>Méthode du coefficient binomial</span></a>
+				<a class="ex2_btn"><span>Méthode de De Casteljau</span></a>
+			</nav>
+		</div>
+
+		<h1 id="currentMethode">Méthode du Coefficient binomial</h1>
+
+		<div id="exs">
+
+			<div id="ex1" class="ex">
+
+				<div id="ex1_btns" class="exs_btns">
+
+					<h2>Paramétrage</h2>
+					<p class="alert alert-info">Pour ajouter un point de contrôle, faîtes un clic sur la zone de dessin</p>
+					<p class="alert alert-error">Pour déplacer un point sélectionnez le et placez le à l'endroit désiré</p>
+					<p class="alert alert-success">Une fois que vous avez le focus sur le slider vous pouvez utilisé les flèches pour affiner la valeur souhaitée</p>
+
+					<div class="menuElement coefBinomMenuElement">
+						
+						<span>Nombre de points sur la courbe :</span>
+						<input id="numberOfPointsRange" type="range" name="range1" min="1" max="300" step="1" value="30" /> 
+						<span id="numberOfPoints">30</span>
+					</div>
+
+					<div class="menuElement coefBinomMenuElement">
+						<span>Afficher les lignes entre les points de controle : </span>
+						<input id="showLignes" type="checkbox" /> 
+					</div>
+
+					<div class="menuElement">
+						<span>Afficher les points de controle : </span>
+						<input id="showControlPoints" type="checkbox" />
+					</div>
+
+					<div class="menuElement CasteljauMenuElement">
+						<span>Régler la tolérance : </span>
+						<input id="toleranceRange" type="range" name="range1" min="1" max="300" step="1" value="30" /> 
+						<span id="tolerance">30</span>
+					</div>
+					
+					<div class="menuElement CasteljauMenuElement">
+						<span>Affichage des rails : </span> 
+						<input id="showRails" type="checkbox" /> 
+					</div>
+
+					<div class="menuElement railsMenuElement">
+						<span>Distance séparant la courbe et les rails</span>
+						<input id="deltaDistRange" type="range" name="range1" min="10" max="300" step="1" value="10" /> 
+						<span id="deltaDist">10</span>
+					</div>
+
+					<button class="btn btn-primary btn-block" id="init_ex1">Réinitialiser</button>
+
+					<p class="alert alert-info">Tp sur les courbes de Bézier :</br>Matthieu DELMAIRE</br>Alexis DUFOUR</p>
+					
+				</div>
+
+				<div id="svgContainer1" class="svgContainer">
+					
+				</div>
+
+
+			</div>
+
+		</div>
+
+
+
+	</div>
+</body>
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script type="text/javascript" src="../libs/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/Point.js"></script>
+<script type="text/javascript" src="../js/Utils.js"></script>
+<script type="text/javascript" src="../js/Bezier.js"></script>
+<script type="text/javascript" src="../js/Segment.js"></script>
+<script type="text/javascript" src="../js/init.js"></script>
+
+</html>

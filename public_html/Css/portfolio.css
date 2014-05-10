@@ -97,39 +97,20 @@
     width: 125px !important;
 }
 
-.project h2{
+.title{
     position: absolute;
-    text-align: center;
+    width: 100%;
     z-index: 98;
     top:50%;    
     font-family: 'Wallpoet', cursive;
     color: #FFFFFF; 
 }
 
-.minesweeper h2{
-    left: 20%;
-}
-
-.myLoc h2{
-    left: 30%;
-}
-
-.callGraph h2{
-    left: 25%;
-}
-
-.epidemix h2{
-    left:28%; 
-}
-
-.electronic h2{
+.project h2{
     text-align: center;
-    left: 6%;
 }
 
-.formulaD h2{
-    left: 28%;
-}
+
 
 
 

@@ -1,0 +1,195 @@
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<link rel="icon" type="image/gif" href="../../ressources/img/icon.png" /> 
+	<title>Epidemix</title>
+	<link rel="stylesheet" type="text/css" href="../../libs/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+</head>
+<body>
+	<div class="modal fade" id="modif-informations-country" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel">Modification des paramètres du pays</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<P>Le facteur de diffusion correspond aux échanges de population qui peut s'effectuer dans le pays</P>
+	      	<form id="country-modifications-form">
+	      		<span>Facteur de diffusion</span><input type="text" id="input-diffusion-factor"/>
+	      	</form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+	        <button type="button" class="btn btn-primary">Enregistrer</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+	<div class="modal fade" id="graphs" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel">Graphes du pays</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<div id="chartcontainer">This is just a replacement in case Javascript is not available or used for SEO purposes</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+
+
+	<div id="container">
+
+		<div id="header">
+			<span class="entypo-globe"></span><h1>Epidemix</h1><span class="entypo-globe"></span>
+		</div>
+
+		<div id="maps">
+			<div id="vmap" class="map"></div>
+		</div>
+
+
+		<div id="right-index">
+			<div id="form-game">
+				<h5>Disease Informations</h5>
+				<div class="form-game-item">
+					<span>Pays : </span><span id="current-country-name"></span>
+				</div>
+
+				<div class="form-game-item">
+					<span>Population de départ : </span><span id="current-country-startPopulation"></span>
+				</div>
+
+				<div class="form-game-item">
+					<span>Population totale : </span><span id="current-country-totalPopulation"></span>
+				</div>
+
+				<div class="form-game-item">
+					<span>Population infectée : </span><span id="current-country-infectes"></span>
+				</div>
+
+				<div class="form-game-item">
+					<span>Décés du à la maladie : </span><span id="current-country-dead"></span>
+				</div>
+
+				<h5>Informations relatives à l'Univers</h5>
+
+				<div class="form-game-item">
+					<span>Facteur de décè : </span><span id="current-country-deathFactor"></span>
+				</div>
+
+				<div class="form-game-item">
+					<span>Facteur de naissance : </span><span id="current-country-birthFactor"></span>
+				</div>
+
+				<div class="form-game-item">
+					<span>Seuil de tolérance : </span><span id="current-country-thereshold"></span>
+				</div>
+
+				<div class="form-game-buttons form-game-item">
+					
+					<button class="btn btn-danger graphs-country" data-toggle="modal" data-target="#graphs">Graphes de ce pays</button>
+				</div>
+
+			</div>
+
+			<div id="general-informations">
+				
+				<div class="general-informations-item">
+					<span class="entypo-gauge"></span><p id="general-informations-contagion">contagion</p>
+				</div>
+
+
+				<div class="general-informations-item">
+					<span class="fontawesome-beaker"></span><p id="general-informations-guerison">Guérison</p>
+				</div>
+
+				<h3>Informations génèrales</h3>
+
+				<div class="general-informations-item">
+
+					<span class="entypo-hourglass"></span><p id="general-informations-time">Temps : Y 0 M 0 D 0</p>
+				</div>
+
+				<div class="general-informations-item">
+					<span class="fontawesome-medkit"></span><p id="general-informations-infectes">Infectés : 0</p>
+				</div>	
+
+				<div class="general-informations-item">
+					<span class="fontawesome-minus-sign"></span><p id="general-informations-dead">Décés : 0</p>
+
+				</div>	
+			</div>
+		</div>
+
+		
+	</div>
+</body>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+	<script type="text/javascript" src="../../libs/bootstrap/dist/js/bootstrap.js"></script>
+	<script type="text/javascript" src="../../libs/JSCharts/sources/jscharts.js"></script>
+
+	<script src="../../libs/maps/jqvmap/jquery.vmap.js"></script>
+	<script src="../../libs/maps/jqvmap/maps/jquery.vmap.world.js"></script>
+	<script src="../../libs/maps/jqvmap/data/jquery.vmap.sampledata.js"></script>
+	<script type="text/javascript" src="../js/maps.js"></script>
+
+
+	<!--
+		****  
+		**** Script utilitaires
+		****
+
+	-->
+
+
+	<!--
+		****  
+		**** Classes Abstraites
+		****
+	-->
+	<script type="text/javascript" src="../js/MVC/AbstractModel.js"></script>
+	<script type="text/javascript" src="../js/MVC/AbstractView.js"></script>
+	<script type="text/javascript" src="../js/Events/AbstractEvent.js"></script>
+
+	<!--
+		***
+		*** Paramètres
+		***
+	-->
+
+	<script type="text/javascript" src="../js/CalculParameter.js"></script>
+
+
+	<!--
+		****  
+		**** Classes Concretes
+		****
+	-->
+	<script type="text/javascript" src="../js/MyDate.js"></script>
+	<script type="text/javascript" src="../js/Country.js"></script>
+	<script type="text/javascript" src="../js/Events/EpidemixInformationsEvent.js"></script>
+	<script type="text/javascript" src="../js/Events/EpidemixInformationsTimeEvent.js"></script>
+	<script type="text/javascript" src="../js/Events/CurrentCountryChangedEvent.js"></script>
+
+	<script type="text/javascript" src="../js/Map/Color.js"></script>
+	<script type="text/javascript" src="../js/Map/Map.js"></script>
+	<script type="text/javascript" src="../js/Map/CountryGroup.js"></script>
+	<script type="text/javascript" src="../js/Map/EmigrationRules.js"></script>
+	<script type="text/javascript" src="../js/Map/Univers.js"></script>
+
+
+	<script type="text/javascript" src="../js/Epidemix.js"></script>
+	<script type="text/javascript" src="../js/MVC/EpidemixInformationsView.js"></script>
+	<script type="text/javascript" src="../js/launcher.js"></script>
+
+</html>

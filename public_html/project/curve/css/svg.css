@@ -1,0 +1,16 @@
+line{
+	stroke:black;
+	width: 10px;
+}
+
+cirlce:hover{
+	stroke:red;
+}
+
+.controlPointsSegment{
+	stroke : blue;
+}
+
+.bezier{
+	stroke:red;
+}

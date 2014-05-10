@@ -1,0 +1,69 @@
+html{
+	background:url("http://goo.gl/w6RY6");
+	font-family: 'Helvetica';
+	color: white;
+}
+
+h1{
+	color: white;
+	text-align: center;
+	font-size: 30px;
+}
+
+#svgContainer1{
+	width: 65%;
+	height: 800px;
+}
+
+#container{
+	margin: 10px;
+}
+
+.svgContainer{
+	display: inline-block;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 5px 5px 80px black;
+}
+
+.ex{
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#exs{
+	margin-top: 50px;
+}
+
+#init_ex1{
+	display: block;
+	margin-top: 20px;
+	height: 100px;
+}
+
+.exs_btns{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 30px;
+	width: 30%;
+}
+
+#ex1_valid{
+	height: 35px;
+	vertical-align: top;
+}
+
+
+
+
+#ex1_btns{
+
+}
+
+#ex1_input{
+	vertical-align: top;
+	display: inline-block;
+	height: 30px;
+	width: 50px;
+}

@@ -11,7 +11,7 @@ $(document).ready(function() {
     /***** Var for Slider ****/
     var maxSize = 4;
     var minSize = 2;
-    var currentSize = 2;
+    var idFirstVisibleProject = 2;
 
     /************************/
 
@@ -27,43 +27,14 @@ $(document).ready(function() {
     });
 
 
-
-    if (firstTime) {
-        $.ajax({
-            "url": "html/presentation.html",
-            "success": function(data) {
-                Utils.showContent($("#container"), data);
-            },
-            error: function(XMLHttpRequest, textStatus, errorThrow) {
-                alert(textStatus);
-            }
-        });
-        firstTime = false;
-    }
-
     $("#menu").click(function(ev) {
-
         var namePage = ev.target.id;
-        if (namePage === "presentation" || namePage === "portfolio" || namePage === "about") {
-            $.ajax({
-                url: "html/" + namePage + ".html",
-                progress: function(progressEvent) {
-                    /*if (progressEvent.lengthComputable) {
-                     console.log("Loaded " + (Math.round(progressEvent.loaded / progressEvent.total * 100)) + "%");
-                     } else {
-                     console.log("Loading...");
-                     }*/
-                    Utils.runTransition(widthWindow, heigthWindow, 500, 300);
-                },
-                success: function(data) {
-                    Utils.showContent($("#container"), data);
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrow) {
-                    alert(textStatus);
-                }
-            });
+        if (namePage === "presentation" || namePage === "portfolio") {
+            idFirstVisibleProject = 2;
+            launchPage(namePage);
+            var History = window.History;
+            History.pushState(null, null, namePage+".html");
         }
-
     });
 
 
@@ -76,11 +47,11 @@ $(document).ready(function() {
         wait = setTimeout(function() {
             Utils.showResume(currentParent);
         }, 500);
-        
+
 
     })
             .delegate(".project", "mouseleave", function(ev) {
-        var wait;
+        clearTimeout(wait);
         var parent = $(this).attr("class");
         var splitClass = parent.split(' ');
         currentParent = splitClass[1];
@@ -91,27 +62,89 @@ $(document).ready(function() {
         var specificArrow = Utils.splitClass(arrowClass, 1);
         var currentProject;
 
-        if (specificArrow === "next" && currentSize <= maxSize) {
-            currentProject = Utils.splitClass($("#allProject").children()[currentSize].className, 1);
-            Utils.slideProject(currentProject, 0);
+        maxSize = $("#allProject").children().size() - 4 - minSize;
 
-            currentSize++;
+        if (specificArrow === "next" && idFirstVisibleProject <= maxSize) {
+            currentProject = Utils.splitClass($("#allProject").children()[idFirstVisibleProject].className, 1);
+            Utils.slideProject(currentProject, 0);
+            idFirstVisibleProject++;
         }
-        if (specificArrow === "previous" && currentSize > minSize) {
-            currentSize--;
-            currentProject = Utils.splitClass($("#allProject").children()[currentSize].className, 1);
+
+        if (specificArrow === "previous" && idFirstVisibleProject > minSize) {
+            idFirstVisibleProject--;
+            currentProject = Utils.splitClass($("#allProject").children()[idFirstVisibleProject].className, 1);
             Utils.slideProject(currentProject, 16.6666666);
         }
-        if (currentSize < maxSize && currentSize > minSize) {
+
+        if (idFirstVisibleProject < maxSize && idFirstVisibleProject > minSize) {
             Utils.hideOrNotArrow($(".next"), false);
             Utils.hideOrNotArrow($(".previous"), false);
         } else {
-            if (currentSize === maxSize) {
+            if (idFirstVisibleProject === maxSize) {
                 Utils.hideOrNotArrow($(".next"), true);
             }
-            if (currentSize === minSize) {
+            if (idFirstVisibleProject === minSize) {
                 Utils.hideOrNotArrow($(".previous"), true);
             }
         }
     });
+
+    var launchPage = function(url) {
+        $.ajax({
+            url: "html/" + url + ".html",
+            success: function(data) {
+                Utils.showContent($("#container"), data);
+            },
+            error: function(textStatus) {
+                alert(textStatus);
+            }
+            /*,
+             xhrFields: {
+             onprogress: function(e) {
+             if (e.lengthComputable) {
+             console.log('Loaded ' + (e.loaded / e.total * 100) + '%');
+             } else {
+             console.log('Length not computable.');
+             }
+             }
+             }*/
+
+        });
+
+    };
+
 });
+
+(function(window,undefined){
+    
+    var History = window.History;
+    var State = History.getState();
+
+    
+    
+    // Bind to StateChange Event
+    History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
+        var name = location.pathname;
+        name = name.split("/");
+        name = name[name.length - 1];
+        name = name.substr(0, name.lastIndexOf("."));
+        if (name === undefined) name = "presentation";
+        $.ajax({
+            url: "html/" + name + ".html",
+            success: function(data) {
+                Utils.showContent($("#container"), data);
+            },
+            error: function(textStatus) {
+                alert(textStatus);
+            }
+        });
+
+    });
+
+
+
+})(window);
+
+
+
+

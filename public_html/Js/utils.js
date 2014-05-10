@@ -17,7 +17,7 @@ var Utils = (function() {
             $("." + parent).find(".squareInfo").animate({
                 height: "100%"
             }, 1000);
-            $("." + parent).find("h2").animate({
+            $("." + parent).find(".title").animate({
                 top: "10%"
             }, 700);
         },
@@ -26,7 +26,7 @@ var Utils = (function() {
             $("." + parent).find(".squareInfo").animate({
                 height: "0%"
             }, 1000);
-            $("." + parent).find("h2").animate({
+            $("." + parent).find(".title").animate({
                 top: "50%"
             }, 700);
         },

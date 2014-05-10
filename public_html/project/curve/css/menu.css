@@ -1,0 +1,51 @@
+@import url(http://fonts.googleapis.com/css?family=Kite+One);
+
+#menu{
+	text-align: right;
+}
+
+#menu a{
+	font:2rem/1.75 "Kite One", sans-serif;
+	cursor:pointer;
+	padding:0 1.5rem;
+	color: #2D2D2D;
+	text-decoration: none;
+	transition-property : color, text-decoration;
+	transition-duration : 0.5s;
+}
+
+#menu a:hover{
+	text-decoration: underline;
+	color: #10CBB2;
+}
+
+label{
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 10px;
+}
+
+input{
+	vertical-align: middle;
+}
+
+.menuElement{
+	margin-bottom: 20px;
+	display: block;
+}
+
+.coefBinomMenuElement{
+	display: visible;
+}
+
+.CasteljauMenuElement{
+	display: none;
+}
+
+.railsMenuElement{
+	display: none;
+}
+
+#numberOfPoints{
+
+}
