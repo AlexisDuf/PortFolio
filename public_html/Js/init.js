@@ -26,12 +26,19 @@ $(document).ready(function() {
         heigthWindow = $(window).height();
     });
 
-
+    addEventListener("load", function(){
+        var name = location.pathname;
+        name = name.split("/");
+        name = name[name.length - 1];
+        name = name.substr(0, name.lastIndexOf("."));
+        if (name === undefined || name === "index") name = "presentation";
+        History.pushState(null, null, name+".html");
+   }, false);
+   
     $("#menu").click(function(ev) {
         var namePage = ev.target.id;
         if (namePage === "presentation" || namePage === "portfolio") {
             idFirstVisibleProject = 2;
-            //launchPage(namePage);
             var History = window.History;
             History.pushState(null, null, namePage+".html");
             ev.preventDefault();
@@ -90,6 +97,29 @@ $(document).ready(function() {
         }
     });
 
+    
+
+});
+
+(function(window,undefined){
+    
+    var History = window.History;
+    var State = History.getState();
+   
+   
+   
+   
+    // Bind to StateChange Event
+    History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
+        
+        var name = location.pathname;
+        name = name.split("/");
+        name = name[name.length - 1];
+        name = name.substr(0, name.lastIndexOf("."));
+        if (name === undefined || name === "index") name = "presentation";
+        launchPage(name);
+    });
+    
     var launchPage = function(url) {
         $.ajax({
             url: "html/" + url + ".html",
@@ -113,34 +143,6 @@ $(document).ready(function() {
         });
 
     };
-
-});
-
-(function(window,undefined){
-    
-    var History = window.History;
-    var State = History.getState();
-
-    
-    
-    // Bind to StateChange Event
-    History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
-        var name = location.pathname;
-        name = name.split("/");
-        name = name[name.length - 1];
-        name = name.substr(0, name.lastIndexOf("."));
-        if (name === undefined) name = "presentation";
-        $.ajax({
-            url: "html/" + name + ".html",
-            success: function(data) {
-                Utils.showContent($("#container"), data);
-            },
-            error: function(textStatus) {
-                alert(textStatus);
-            }
-        });
-
-    });
 
 
 
