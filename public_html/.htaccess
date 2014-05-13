@@ -1,0 +1,4 @@
+Options +FollowSymlinks
+RewriteEngine On
+RewriteRule ^presentation.html$	index.html [L]	
+RewriteRule ^portfolio.html$	index.html [L]

@@ -104,14 +104,11 @@ $(document).ready(function() {
 (function(window,undefined){
     
     var History = window.History;
-    var State = History.getState();
-   
-   
+    var State = History.getState();   
    
    
     // Bind to StateChange Event
     History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
-        
         var name = location.pathname;
         name = name.split("/");
         name = name[name.length - 1];
