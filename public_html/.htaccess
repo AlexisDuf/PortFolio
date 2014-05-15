@@ -1,4 +1,4 @@
 Options +FollowSymlinks
 RewriteEngine On
-RewriteRule ^presentation.html$	index.html [L]	
-RewriteRule ^portfolio.html$	index.html [L]
+RewriteRule	^portfolio$ index_portfolio.php	[L]
+RewriteRule	^presentation$	index_presentation.php	[L]		

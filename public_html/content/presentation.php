@@ -1,6 +1,6 @@
 <section id="me">
     <div class="content">
-        <div class="circle"><img  class="logo" src="Ressources/logo.png" alt=""></div>
+        <div class="circle"><img  class="logo" src="Ressources/logo.png" ></div>
         <h1>Étudiant en Informatique <span>à ISEN Lille</span></h1>
         <p class="text-presentation"> Je m'appelle Alexis Dufour, je suis actuellement
         étudiant en 3ème année de Cycle Informatique et Réseaux à ISEN Lille. Passionné 

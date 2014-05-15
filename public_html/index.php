@@ -37,7 +37,9 @@ and open the template in the editor.
             </svg>
         </div>
 
-        <div id="container"></div>           
+        <div id="container">
+            <?php include 'content/presentation.php';?>
+        </div>           
         <footer>            
         </footer>
         <script type="text/javascript" src="Library/jquery-1.11.0.min.js"></script>
